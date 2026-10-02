@@ -1,0 +1,10 @@
+    Blocking waiting for file lock on package cache
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.26s
+     Running unittests src/lib.rs (/home/satty/study/adversary-validation/.work/build/raft-log/shared-cursor/fixed/debug/deps/raft_log-3eb5d65ebba11fa5)
+
+running 1 test
+Concurrent read test completed: 0 errors, 0 mismatches, 0 panics
+test tests::test_concurrent_read::test_concurrent_read_race_condition ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 49 filtered out; finished in 0.03s
+

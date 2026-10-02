@@ -1,0 +1,208 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling libc v0.2.189
+   Compiling siphasher v1.0.4
+   Compiling cfg-if v1.0.5
+   Compiling rand_core v0.6.4
+   Compiling regex-syntax v0.8.11
+   Compiling phf_shared v0.11.3
+   Compiling autocfg v1.5.1
+   Compiling serde_core v1.0.229
+   Compiling rand v0.8.8
+   Compiling num-traits v0.2.19
+   Compiling serde v1.0.229
+   Compiling unicode-segmentation v1.13.3
+   Compiling phf_generator v0.11.3
+   Compiling syn v3.0.6
+   Compiling phf_codegen v0.11.3
+   Compiling syn v2.0.119
+   Compiling regex-automata v0.4.18
+   Compiling phf v0.11.3
+   Compiling getrandom v0.3.4
+   Compiling zerocopy v0.8.59
+   Compiling once_cell v1.21.4
+   Compiling rustix v1.1.5
+   Compiling getrandom v0.4.3
+   Compiling convert_case v0.6.0
+   Compiling regex v1.13.1
+   Compiling serde_derive v1.0.229
+   Compiling linux-raw-sys v0.12.1
+   Compiling parse-zoneinfo v0.3.1
+   Compiling anyhow v1.0.104
+   Compiling iana-time-zone v0.1.65
+   Compiling chrono-tz-build v0.2.1
+   Compiling crc32fast v1.5.2
+   Compiling bitflags v2.13.2
+   Compiling unicode-xid v0.2.6
+   Compiling derive_more-impl v1.0.0
+   Compiling chrono-tz v0.8.6
+   Compiling rand_core v0.9.5
+   Compiling console v0.15.11
+   Compiling similar v2.7.0
+   Compiling thiserror v1.0.69
+   Compiling fastrand v2.5.0
+   Compiling yansi v1.0.1
+   Compiling tempfile v3.27.0
+   Compiling ppv-lite86 v0.2.21
+   Compiling similar-asserts v1.7.0
+   Compiling rand_chacha v0.9.0
+   Compiling thiserror-impl v1.0.69
+   Compiling rmp v0.8.15
+   Compiling chrono v0.4.45
+   Compiling diff v0.1.13
+   Compiling scopeguard v1.2.0
+   Compiling static_assertions v1.1.0
+   Compiling byteorder v1.5.0
+   Compiling rmp-serde v1.3.1
+   Compiling goldenfile v1.11.0
+   Compiling pretty_assertions v1.4.1
+   Compiling rand v0.9.5
+   Compiling fs2 v0.4.3
+   Compiling log v0.4.34
+   Compiling indoc v2.0.7
+   Compiling derive_more v1.0.0
+   Compiling codeq v0.5.2
+   Compiling display-more v0.2.6
+   Compiling raft-log v0.2.12 (/home/satty/study/adversary-validation/.work/targets/raft-log/shared-cursor/vulnerable)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 29.49s
+     Running unittests src/lib.rs (/home/satty/study/adversary-validation/.work/build/raft-log/shared-cursor/vulnerable/debug/deps/raft_log-3eb5d65ebba11fa5)
+
+running 1 test
+
+thread '<unnamed>' (15358) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 4)
+ right: (1, 6)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread '<unnamed>' (15360) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 7)
+ right: (1, 4)
+
+thread '<unnamed>' (15359) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 9)
+ right: (1, 10)
+
+thread '<unnamed>' (15359) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 12)
+ right: (1, 15)
+
+thread '<unnamed>' (15360) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 9)
+ right: (1, 11)
+
+thread '<unnamed>' (15360) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 19)
+ right: (1, 16)
+
+thread '<unnamed>' (15361) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 18)
+ right: (1, 16)
+
+thread '<unnamed>' (15359) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 20)
+ right: (1, 22)
+
+thread '<unnamed>' (15360) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 30)
+ right: (1, 28)
+
+thread '<unnamed>' (15360) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 39)
+ right: (1, 36)
+
+thread '<unnamed>' (15359) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 46)
+ right: (1, 47)
+
+thread '<unnamed>' (15358) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 5)
+ right: (1, 4)
+
+thread '<unnamed>' (15358) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 9)
+ right: (1, 10)
+
+thread '<unnamed>' (15359) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 12)
+ right: (1, 15)
+
+thread '<unnamed>' (15359) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 12)
+ right: (1, 14)
+
+thread '<unnamed>' (15360) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 8)
+ right: (1, 11)
+
+thread '<unnamed>' (15360) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 9)
+ right: (1, 11)
+
+thread '<unnamed>' (15361) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 22)
+ right: (1, 20)
+
+thread '<unnamed>' (15358) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 24)
+ right: (1, 27)
+
+thread '<unnamed>' (15361) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 23)
+ right: (1, 20)
+
+thread '<unnamed>' (15360) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 24)
+ right: (1, 26)
+
+thread '<unnamed>' (15358) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 35)
+ right: (1, 34)
+
+thread '<unnamed>' (15358) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 42)
+ right: (1, 40)
+
+thread '<unnamed>' (15359) panicked at src/raft_log/wal/mod.rs:273:13:
+assertion `left == right` failed
+  left: (1, 44)
+ right: (1, 47)
+Concurrent read test completed: 39 errors, 0 mismatches, 24 panics
+
+thread 'tests::test_concurrent_read::test_concurrent_read_race_condition' (15354) panicked at src/tests/test_concurrent_read.rs:138:5:
+assertion `left == right` failed: Race condition detected: 39 errors, 0 data mismatches, 24 panics
+  left: 63
+ right: 0
+test tests::test_concurrent_read::test_concurrent_read_race_condition ... FAILED
+
+failures:
+
+failures:
+    tests::test_concurrent_read::test_concurrent_read_race_condition
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 49 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `--lib`

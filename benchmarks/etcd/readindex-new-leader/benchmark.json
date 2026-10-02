@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "etcd/readindex-new-leader",
+  "class": "E",
+  "title": "ReadIndex before current-term commitment",
+  "project": "etcd/raft",
+  "bug_identifier": "7331",
+  "upstream": "https://github.com/etcd-io/etcd.git",
+  "status": "SOURCE-IDENTIFIED",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED"
+  ],
+  "references": [
+    "https://github.com/etcd-io/etcd/issues/7331",
+    "https://github.com/etcd-io/etcd/pull/7332",
+    "https://github.com/etcd-io/etcd/commit/9342647e0c9b9a2a12e4bc5ee76d28d5b9f29f83"
+  ],
+  "source_anchors": [
+    "raft/raft.go",
+    "raft/raft_test.go",
+    "raft/read_only.go"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": "fixed.lock"
+  },
+  "required_capabilities": [
+    "message-ordering",
+    "timers",
+    "client-history"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "same historical counterexample must not be admitted"
+  },
+  "patches": [],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Acquire glide.lock dependencies with checksums in an isolated GOPATH.",
+    "Transplant the upstream regression test as test-only reproduction input.",
+    "Supply real history/state-machine integration above the protocol module."
+  ]
+}
+

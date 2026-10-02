@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "vulnerable",
+  "upstream": "https://github.com/cockroachdb/pebble.git",
+  "commit": "57c482fb4e96fb89ca76cbc582354240a54f2f8c",
+  "tree": "d001b99499392d57d7563e36d5980682c67c4e3d",
+  "status": "source-verified",
+  "relationship": "first-parent-of-fix"
+}
+

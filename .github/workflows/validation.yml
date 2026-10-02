@@ -1,0 +1,55 @@
+name: Laboratory validation
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  metadata:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.14.5'
+      - run: python -m pip install -r requirements.lock
+      - run: python scripts/validate-metadata.py
+      - run: python controls/run.py
+      - run: python scripts/report.py --check
+      - run: python -m compileall -q scripts controls
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - benchmark: raft-log/shared-cursor
+            revision: fixed
+          - benchmark: openraft/divergent-log-liveness
+            revision: fixed
+          - benchmark: hashicorp-raft/transfer-flag
+            revision: vulnerable
+          - benchmark: hashicorp-raft/transfer-flag
+            revision: fixed
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.14.5'
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
+        with:
+          go-version: '1.26.4'
+          cache: false
+      - run: rustup toolchain install 1.97.1 --profile minimal
+      - run: python -m pip install -r requirements.lock
+      - run: python scripts/fetch-targets.py --benchmark '${{ matrix.benchmark }}'
+      - run: python scripts/verify-pins.py --benchmark '${{ matrix.benchmark }}'
+      - run: python scripts/native-baseline.py --benchmark '${{ matrix.benchmark }}' --revision '${{ matrix.revision }}'
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-${{ strategy.job-index }}
+          path: results/local/

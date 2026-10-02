@@ -1,0 +1,32 @@
+{
+  "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "machine": "x86_64",
+  "python": "3.14.5",
+  "toolchain": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+  "git": "git version 2.54.0",
+  "argv": [
+    "cargo",
+    "+1.97.1",
+    "test",
+    "--locked",
+    "-p",
+    "async-raft",
+    "--test",
+    "append_inconsistent_log",
+    "--",
+    "--nocapture"
+  ],
+  "source_patches": [],
+  "dependency_hashes": {
+    "Cargo.lock": "b5785cc8f0d9d62d3946ab58ff8393ac85410d6a46ff8f52fb4c1185e0e9bf5f"
+  },
+  "compiler_flags": {
+    "RUSTFLAGS": "",
+    "GOFLAGS": "",
+    "GOEXPERIMENT": "",
+    "CGO_ENABLED": "",
+    "CC": "",
+    "CFLAGS": ""
+  },
+  "storage_qualification": "not performed; baseline only"
+}

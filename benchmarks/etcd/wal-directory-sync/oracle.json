@@ -1,0 +1,13 @@
+{
+  "version": "oracle/1",
+  "property": "A successfully saved-and-synced WAL entry survives the declared ordinary power loss and remains recoverable under its segment identity; namespace publication cannot invalidate that durability acknowledgement.",
+  "method": "Compare recoverable saved entries and hard state with successful Save fences. Allow valid unacknowledged suffixes, reject missing acknowledged prefixes or unexpected recovery errors. Correlated node failure is unnecessary for this local WAL property.",
+  "witness_requirements": "File/inode identity through temp creation and rename, writes, file sync fences, namespace/root sync, Save success, legal crash image and exact recovery enumeration/decoded entries.",
+  "control_requirements": [
+    "known-valid history/state accepted",
+    "deliberately invalid history/state rejected",
+    "fixed revision matched when available",
+    "unreached checker is INCONCLUSIVE"
+  ]
+}
+

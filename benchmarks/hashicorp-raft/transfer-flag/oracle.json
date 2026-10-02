@@ -1,0 +1,13 @@
+{
+  "version": "oracle/1",
+  "property": "After a finite failed transfer and restoration of fair quorum communication, new application commands must commit within the bounded recovery interval.",
+  "method": "After healing and transfer completion/failure, require 100 new successful commands and follower convergence within 20 maximum election timeouts. Record transfer flag only as diagnosis; progress is the independent property.",
+  "witness_requirements": "Transfer initiation and terminal result, fair healed quorum, enabled client submissions, persistent rejection/no commit, controller enabled-set and progress deadline.",
+  "control_requirements": [
+    "known-valid history/state accepted",
+    "deliberately invalid history/state rejected",
+    "fixed revision matched when available",
+    "unreached checker is INCONCLUSIVE"
+  ]
+}
+

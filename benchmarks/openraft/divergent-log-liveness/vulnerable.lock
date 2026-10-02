@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "vulnerable",
+  "upstream": "https://github.com/databendlabs/openraft.git",
+  "commit": "ab6689d951954e3adbe8eb427364cf9062da1425",
+  "tree": "710352c2bb0d16f959941e156e90a7fa1bcf8402",
+  "status": "source-verified",
+  "relationship": "first-parent-of-fix"
+}
+

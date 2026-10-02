@@ -1,0 +1,20 @@
+{
+  "version": "envelope/1",
+  "required_capabilities": [
+    "shared-memory-scheduling"
+  ],
+  "behaviors": [
+    {
+      "id": "concurrent-readers",
+      "semantics": "Independent native readers share original file handles; schedule runnable readers inside operations where the target permits. No synthetic byte corruption or concurrent writes."
+    }
+  ],
+  "recovery": "Faults cease; all configured nodes/connections are healthy. Continuously enabled tasks, IO and messages receive finite bounded progress, clocks advance. Verify actual election timeouts and fairness bounds before liveness judgment.",
+  "exclusions": [
+    "Byzantine behavior",
+    "weak-memory exploration",
+    "unqualified native filesystem/device power-loss correspondence",
+    "full production service transport/framing outside the stated module boundary"
+  ]
+}
+

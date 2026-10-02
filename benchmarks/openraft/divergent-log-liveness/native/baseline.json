@@ -1,0 +1,31 @@
+{
+  "kind": "cargo",
+  "toolchain": "1.97.1",
+  "argv": [
+    "cargo",
+    "+1.97.1",
+    "test",
+    "--locked",
+    "-p",
+    "async-raft",
+    "--test",
+    "append_inconsistent_log",
+    "--",
+    "--nocapture"
+  ],
+  "test_filter": "append_inconsistent_log",
+  "availability": "both",
+  "note": "Upstream fixture constructs divergent initial log suffixes and is REPRODUCTION input, never search input. The exact test-only addition is transplanted to the vulnerable revision. Both use the frozen native/Cargo.lock, Rust 1.97.1 and unchanged Raft algorithms.",
+  "dependency_status": "frozen-overlay",
+  "dependency_files": [
+    "Cargo.lock"
+  ],
+  "coverage": "upstream baseline only; no historical reproduction or fair search discrimination claim",
+  "timeout_seconds": 120,
+  "dependency_overlays": {
+    "Cargo.lock": {
+      "path": "native/Cargo.lock",
+      "sha256": "b5785cc8f0d9d62d3946ab58ff8393ac85410d6a46ff8f52fb4c1185e0e9bf5f"
+    }
+  }
+}

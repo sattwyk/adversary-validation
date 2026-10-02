@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "openraft/snapshot-apply-regression",
+  "class": "D",
+  "title": "Snapshot/application publication regresses last-applied",
+  "project": "OpenRaft (historical async-raft)",
+  "bug_identifier": "eed681d",
+  "upstream": "https://github.com/databendlabs/openraft.git",
+  "status": "SOURCE-IDENTIFIED",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED"
+  ],
+  "references": [
+    "https://github.com/databendlabs/openraft/commit/eed681d57950fc58b6ca71a45814b8f6d2bb1223"
+  ],
+  "source_anchors": [
+    "async-raft/src/core/install_snapshot.rs",
+    "async-raft/src/core/append_entries.rs",
+    "async-raft/src/core/mod.rs"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": "fixed.lock"
+  },
+  "required_capabilities": [
+    "message-ordering",
+    "timers",
+    "concurrent-publication",
+    "shared-memory-scheduling"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "same historical counterexample must not be admitted"
+  },
+  "patches": [],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Freeze historical dependencies.",
+    "Add observational publication instrumentation without moving synchronization.",
+    "Prepare a separately labeled scripted concurrency execution; preserve multiple vulnerable continuations."
+  ]
+}
+

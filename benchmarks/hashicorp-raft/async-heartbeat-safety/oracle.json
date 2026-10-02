@@ -1,0 +1,13 @@
+{
+  "version": "oracle/1",
+  "property": "No two replicas apply different commands at the same committed index; at most one elected leader may have valid election authority in a term.",
+  "method": "Compare independent committed/apply witnesses at matching indices and vote/election evidence; distinguish a candidate's belief from quorum-certified election. Client histories supplement the internal witness.",
+  "witness_requirements": "Term/role observation with task/thread identity, asynchronous incoming heartbeat, overlapping main protocol operation, emitted log identity/value, commit quorums and conflicting applied values.",
+  "control_requirements": [
+    "known-valid history/state accepted",
+    "deliberately invalid history/state rejected",
+    "fixed revision matched when available",
+    "unreached checker is INCONCLUSIVE"
+  ]
+}
+

@@ -1,0 +1,25 @@
+{
+  "kind": "go",
+  "toolchain": "go1.26.4",
+  "argv": [
+    "go",
+    "test",
+    "-v",
+    "-mod=readonly",
+    "-run",
+    "^TestCrashDuringManifestWrite_LargeKeys$",
+    "-count=1",
+    "-timeout=120s",
+    "."
+  ],
+  "test_filter": "TestCrashDuringManifestWrite_LargeKeys",
+  "availability": "fixed-only",
+  "note": "Upstream fixture uses CrashableMemFS and manifest-specific random crash sampling. It is an upstream model/regression baseline, not native power-loss confirmation or blind search. Parent lacks the added test.",
+  "dependency_status": "upstream-module-lock",
+  "dependency_files": [
+    "go.mod",
+    "go.sum"
+  ],
+  "coverage": "upstream baseline only; no historical reproduction or fair search discrimination claim",
+  "timeout_seconds": 180
+}

@@ -1,0 +1,22 @@
+{
+  "version": "envelope/1",
+  "required_capabilities": [
+    "storage-ordering",
+    "directory-durability",
+    "power-loss",
+    "multi-object-recovery"
+  ],
+  "behaviors": [
+    {
+      "id": "file-namespace-power-cut",
+      "semantics": "Up to two power cuts over the local target volume. Writes/file-sync and rename/directory-sync remain distinct; a successful directory fence persists earlier namespace operations. Unsynced rename can recover old/new legally; handles retain inode identity. No loss of successfully fenced untouched bytes."
+    }
+  ],
+  "recovery": "Faults cease; reopen through the original WAL discovery/decoder APIs on recovered file identities and namespace. Complete recovery within 100000 enabled operation/task selections; budget exhaustion without qualified progress is INCONCLUSIVE, not lost-data evidence. Compare every sync-acknowledged entry and hard state against the input ledger.",
+  "exclusions": [
+    "Byzantine behavior",
+    "weak-memory exploration",
+    "unqualified native filesystem/device power-loss correspondence",
+    "full production service transport/framing outside the stated module boundary"
+  ]
+}

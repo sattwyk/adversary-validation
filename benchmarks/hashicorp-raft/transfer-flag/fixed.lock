@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "fixed",
+  "upstream": "https://github.com/hashicorp/raft.git",
+  "commit": "f2fdbd651e1d824151bfb0f73aa297b8903632ac",
+  "tree": "4a36207d0ed62f7285896f3fb1629c4f637912fd",
+  "status": "source-verified",
+  "relationship": "fix-commit"
+}
+

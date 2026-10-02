@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "id": "hashicorp-raft/transfer-flag",
+  "class": "I",
+  "title": "Failed leadership transfer leaves progress blocked",
+  "project": "HashiCorp Raft",
+  "bug_identifier": "493",
+  "upstream": "https://github.com/hashicorp/raft.git",
+  "status": "BASELINE-PREPARED",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED",
+    "BUILD-VERIFIED"
+  ],
+  "references": [
+    "https://github.com/hashicorp/raft/pull/493",
+    "https://github.com/hashicorp/raft/commit/f2fdbd651e1d824151bfb0f73aa297b8903632ac"
+  ],
+  "source_anchors": [
+    "raft.go",
+    "raft_test.go"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": "fixed.lock"
+  },
+  "required_capabilities": [
+    "message-ordering",
+    "timers",
+    "fair-progress"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "same historical counterexample must not be admitted"
+  },
+  "patches": [],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Add a test-only ordinary transfer-failure fixture that demonstrates continuing progress failure and fixed discrimination.",
+    "Compare fair enabled sets to exclude controller stalls.",
+    "Retain race-enabled/native multi-node follow-up before production claims."
+  ]
+}

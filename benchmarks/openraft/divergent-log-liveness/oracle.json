@@ -1,0 +1,13 @@
+{
+  "version": "oracle/1",
+  "property": "After faults stop and all three voters have fair communication and execution, a stable leader's committed prefix must propagate to every running follower within the declared recovery bound.",
+  "method": "Require at least 100 successful post-heal commits and convergence of each follower's committed/applied prefix to the stable leader. Validate fair delivery before interpreting timeout.",
+  "witness_requirements": "Divergent prefixes reached through ordinary operations, conflict responses, unchanged next replication position, healthy-period deliveries, timer progress and convergence deadline.",
+  "control_requirements": [
+    "known-valid history/state accepted",
+    "deliberately invalid history/state rejected",
+    "fixed revision matched when available",
+    "unreached checker is INCONCLUSIVE"
+  ]
+}
+

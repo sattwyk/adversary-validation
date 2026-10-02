@@ -1,0 +1,250 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+/[a-z0-9-]+$"
+    },
+    "class": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bug_identifier": {
+      "type": "string",
+      "minLength": 1
+    },
+    "upstream": {
+      "type": "string",
+      "pattern": "^https://github.com/[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+\\.git$"
+    },
+    "status": {
+      "enum": [
+        "SOURCE-IDENTIFIED",
+        "BASELINE-PREPARED",
+        "NEEDS-UPSTREAM-INVESTIGATION",
+        "REPRODUCTION-PREPARED"
+      ]
+    },
+    "historical_claim_kind": {
+      "enum": [
+        "production-incident",
+        "historical-bug",
+        "test-only-failure",
+        "synthetic-mutant",
+        "research-reproducer"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "DOCUMENTED",
+          "SOURCE-VERIFIED",
+          "BUILD-VERIFIED"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_anchors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "targets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "vulnerable": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fixed": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "vulnerable",
+        "fixed"
+      ]
+    },
+    "required_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "workload": {
+          "type": "string",
+          "minLength": 1
+        },
+        "environment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "oracle": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "workload",
+        "environment",
+        "oracle"
+      ]
+    },
+    "reviewer_only": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "expectations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "vulnerable": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fixed": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "vulnerable",
+        "fixed"
+      ]
+    },
+    "patches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "scope": {
+            "enum": [
+              "test-only",
+              "observational"
+            ]
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "vulnerable",
+                "fixed"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "postimages": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$"
+            }
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "scope",
+          "roles",
+          "postimages"
+        ]
+      }
+    },
+    "native": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preparation_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "class",
+    "title",
+    "project",
+    "bug_identifier",
+    "upstream",
+    "status",
+    "historical_claim_kind",
+    "evidence",
+    "references",
+    "source_anchors",
+    "targets",
+    "required_capabilities",
+    "inputs",
+    "reviewer_only",
+    "expectations",
+    "patches",
+    "native",
+    "preparation_gaps"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

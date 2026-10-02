@@ -1,0 +1,13 @@
+{
+  "version": "oracle/1",
+  "property": "Completed reads are linearizable: a read beginning after a write completes must observe that write or a later valid write, respecting concurrent and unknown operations.",
+  "method": "Check invocation/response histories against an independent register model; reads wait for application through the returned index. A protocol ReadIndex certificate alone is not a completed application read.",
+  "witness_requirements": "Predecessor write success, later read invocation/response, prior commitment evidence, new leader/election and read certificate, applied index and returned value.",
+  "control_requirements": [
+    "known-valid history/state accepted",
+    "deliberately invalid history/state rejected",
+    "fixed revision matched when available",
+    "unreached checker is INCONCLUSIVE"
+  ]
+}
+

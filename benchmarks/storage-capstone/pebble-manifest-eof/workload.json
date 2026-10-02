@@ -1,0 +1,57 @@
+{
+  "version": "workload/1",
+  "description": "Use native Pebble Set with Sync over 256 unique keys of varied sizes, normal async flushes and background compaction; permit power cuts during any eligible storage operation and reopen the same object set. Compare all acknowledged key/value pairs. No exact manifest write/crash point is supplied to search.",
+  "configuration": {
+    "keys": 256,
+    "key_length_range": [
+      16,
+      100000
+    ],
+    "value_bytes": 128,
+    "write_options": "Sync",
+    "flush_every_writes": 16,
+    "background_compaction": true,
+    "initial_state": "new-empty-db"
+  },
+  "budget": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "max_executions_per_seed": 1000,
+    "max_events_per_execution": 100000,
+    "max_wall_seconds_per_seed": 600,
+    "fault_phase_max_election_timeouts": 10,
+    "recovery_phase_max_election_timeouts": 20
+  },
+  "parameter_disclosure": "Laboratory design informed by historical source. No blind authorship is claimed. Parameters must be frozen before search; they contain no prescribed failing event sequence."
+}
+

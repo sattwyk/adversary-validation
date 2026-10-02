@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "role": {
+      "enum": [
+        "vulnerable",
+        "fixed"
+      ]
+    },
+    "upstream": {
+      "type": "string",
+      "minLength": 1
+    },
+    "commit": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "tree": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "status": {
+      "enum": [
+        "source-verified",
+        "unresolved"
+      ]
+    },
+    "relationship": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "role",
+    "upstream",
+    "commit",
+    "tree",
+    "status",
+    "relationship"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

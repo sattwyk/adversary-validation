@@ -1,0 +1,23 @@
+{
+  "version": "envelope/1",
+  "required_capabilities": [
+    "shared-memory-scheduling",
+    "shared-wal-index",
+    "storage-ordering",
+    "multi-object-recovery"
+  ],
+  "behaviors": [
+    {
+      "id": "wal-concurrent-connections",
+      "semantics": "Native connections share the same database, WAL and mapped WAL-index locks/state. Normal writer/reset and checkpoint progress may overlap. No process crash or media error in this race envelope."
+    }
+  ],
+  "recovery": "Faults cease; all configured nodes/connections are healthy. Continuously enabled tasks, IO and messages receive finite bounded progress, clocks advance. Verify actual election timeouts and fairness bounds before liveness judgment.",
+  "exclusions": [
+    "Byzantine behavior",
+    "weak-memory exploration",
+    "unqualified native filesystem/device power-loss correspondence",
+    "full production service transport/framing outside the stated module boundary"
+  ]
+}
+

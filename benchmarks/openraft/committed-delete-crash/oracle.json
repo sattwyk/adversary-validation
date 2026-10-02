@@ -1,0 +1,13 @@
+{
+  "version": "oracle/1",
+  "property": "Every committed command remains represented in the committed history after admissible crash/restart and later elections; no later successful read or applied history may omit or replace it.",
+  "method": "Record committed identities from quorum evidence and completed client writes; after recovery require the corresponding immutable committed prefix and linearizable sequential final reads. Storage effects must meet RaftStorage's documented contract.",
+  "witness_requirements": "Commit quorum for the lost command, real delete and append calls, durable storage snapshots before/after death, fresh recovery/election evidence, recovered/applied prefix and client observation.",
+  "control_requirements": [
+    "known-valid history/state accepted",
+    "deliberately invalid history/state rejected",
+    "fixed revision matched when available",
+    "unreached checker is INCONCLUSIVE"
+  ]
+}
+

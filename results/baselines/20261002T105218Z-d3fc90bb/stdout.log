@@ -1,0 +1,101 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling pin-project-lite v0.2.17
+   Compiling serde_core v1.0.229
+   Compiling libc v0.2.189
+   Compiling cfg-if v1.0.5
+   Compiling once_cell v1.21.4
+   Compiling zerocopy v0.8.59
+   Compiling tracing-core v0.1.36
+   Compiling memchr v2.8.3
+   Compiling serde v1.0.229
+   Compiling futures-sink v0.3.34
+   Compiling futures-core v0.3.34
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling futures-channel v0.3.34
+   Compiling futures-task v0.3.34
+   Compiling futures-io v0.3.34
+   Compiling getrandom v0.2.17
+   Compiling zmij v1.0.23
+   Compiling slab v0.4.12
+   Compiling autocfg v1.5.1
+   Compiling rand_core v0.6.4
+   Compiling log v0.4.34
+   Compiling num-traits v0.2.19
+   Compiling thiserror v1.0.69
+   Compiling serde_json v1.0.151
+   Compiling anyhow v1.0.104
+   Compiling itoa v1.0.18
+   Compiling bytes v1.12.1
+   Compiling regex-syntax v0.8.11
+   Compiling regex-syntax v0.6.29
+   Compiling ppv-lite86 v0.2.21
+   Compiling regex-automata v0.1.10
+   Compiling rand_chacha v0.3.1
+   Compiling regex-automata v0.4.18
+   Compiling rand v0.8.8
+   Compiling tracing-attributes v0.1.31
+   Compiling futures-macro v0.3.34
+   Compiling serde_derive v1.0.229
+   Compiling pin-project-internal v1.1.13
+   Compiling tokio-macros v2.7.2
+   Compiling futures-util v0.3.34
+   Compiling tracing v0.1.44
+   Compiling thiserror-impl v1.0.69
+   Compiling tokio v1.53.1
+   Compiling pin-project v1.1.13
+   Compiling tracing-futures v0.2.5
+   Compiling async-trait v0.1.92
+   Compiling derive_more v0.99.20
+   Compiling iana-time-zone v0.1.65
+   Compiling ansi_term v0.12.1
+   Compiling lazy_static v1.5.1
+   Compiling sharded-slab v0.1.7
+   Compiling chrono v0.4.45
+   Compiling regex v1.13.1
+   Compiling futures-executor v0.3.34
+   Compiling futures v0.3.34
+   Compiling matchers v0.0.1
+   Compiling tracing-log v0.1.4
+   Compiling thread_local v1.1.10
+   Compiling smallvec v1.16.2
+   Compiling diff v0.1.13
+   Compiling maplit v1.0.2
+   Compiling tracing-serde v0.1.3
+   Compiling pretty_assertions v0.7.2
+   Compiling tracing-subscriber v0.2.25
+   Compiling async-raft v0.6.1 (/home/satty/study/adversary-validation/.work/targets/openraft/divergent-log-liveness/vulnerable/async-raft)
+warning: use of deprecated method `futures::stream::FuturesOrdered::<Fut>::push`: use `push_back` instead
+   --> async-raft/src/core/append_entries.rs:295:37
+    |
+295 |         self.replicate_to_sm_handle.push(handle);
+    |                                     ^^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated method `futures::stream::FuturesOrdered::<Fut>::push`: use `push_back` instead
+   --> async-raft/src/core/append_entries.rs:337:37
+    |
+337 |         self.replicate_to_sm_handle.push(handle);
+    |                                     ^^^^
+
+   Compiling memstore v0.2.0 (/home/satty/study/adversary-validation/.work/targets/openraft/divergent-log-liveness/vulnerable/memstore)
+warning: `async-raft` (lib) generated 2 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 32.77s
+     Running tests/append_inconsistent_log.rs (/home/satty/study/adversary-validation/.work/build/openraft/divergent-log-liveness/vulnerable/debug/deps/append_inconsistent_log-522aa265e24827ef)
+
+running 1 test
+Oct 02 16:22:51.735 ERROR async_raft::core: error reporting metrics error=channel closed id=0
+Error: timeout after 5s when node 2 become leader .state -> Leader latest: RaftMetrics { id: 2, state: Follower, current_term: 3, last_log_index: 100, last_applied: 3, current_leader: None, membership_config: MembershipConfig { members: {0, 1, 2}, members_after_consensus: None }, snapshot: LogId { term: 0, index: 0 }, leader_metrics: None }
+test append_inconsistent_log ... FAILED
+
+failures:
+
+failures:
+    append_inconsistent_log
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.06s
+
+error: test failed, to rerun pass `-p async-raft --test append_inconsistent_log`

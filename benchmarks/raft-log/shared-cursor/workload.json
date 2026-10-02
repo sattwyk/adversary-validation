@@ -1,0 +1,52 @@
+{
+  "version": "workload/1",
+  "description": "Append 256 distinct index-tagged payloads, flush and reopen; run four concurrent readers over independent ranges in the same immutable log, checking all returned identities and values. Use small chunks and a documented cache-disabled operational configuration to exercise disk reads. Do not prescribe seek/read ordering.",
+  "configuration": {
+    "entries": 256,
+    "readers": 4,
+    "iterations_per_reader": 128,
+    "chunk_max_records": 8,
+    "log_cache_capacity": 0
+  },
+  "budget": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "max_executions_per_seed": 1000,
+    "max_events_per_execution": 100000,
+    "max_wall_seconds_per_seed": 600,
+    "fault_phase_max_election_timeouts": 10,
+    "recovery_phase_max_election_timeouts": 20
+  },
+  "parameter_disclosure": "Laboratory design informed by historical source. No blind authorship is claimed. Parameters must be frozen before search; they contain no prescribed failing event sequence."
+}
+

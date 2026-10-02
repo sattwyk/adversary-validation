@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "fixed",
+  "upstream": "https://github.com/etcd-io/etcd.git",
+  "commit": "bd7107bd4bf26219ba9852aa6c4c817ccde0191c",
+  "tree": "76408639c98cf250d770423a3c89ec43398362f6",
+  "status": "source-verified",
+  "relationship": "fix-commit"
+}
+

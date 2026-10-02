@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "hashicorp-raft/async-heartbeat-safety",
+  "class": "H",
+  "title": "Async heartbeat changes term concurrently with protocol path",
+  "project": "HashiCorp Raft",
+  "bug_identifier": "695",
+  "upstream": "https://github.com/hashicorp/raft.git",
+  "status": "NEEDS-UPSTREAM-INVESTIGATION",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED"
+  ],
+  "references": [
+    "https://github.com/hashicorp/raft/issues/695",
+    "https://github.com/hashicorp/raft/pull/701"
+  ],
+  "source_anchors": [
+    "raft.go",
+    "net_transport.go",
+    "replication.go"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": null
+  },
+  "required_capabilities": [
+    "message-ordering",
+    "timers",
+    "shared-memory-scheduling",
+    "client-history"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "unresolved; no accepted fixed control"
+  },
+  "patches": [],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Obtain an accepted reviewed upstream fix and exact parent pair, or independently validate a separately labeled candidate control.",
+    "Execute the documented mechanism locally.",
+    "Audit whether term access instrumentation itself serializes the race."
+  ]
+}
+

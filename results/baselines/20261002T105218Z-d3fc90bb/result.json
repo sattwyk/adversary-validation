@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "run_id": "20261002T105218Z-d3fc90bb",
+  "benchmark": "openraft/divergent-log-liveness",
+  "target_revision": "vulnerable",
+  "source_commit": "ab6689d951954e3adbe8eb427364cf9062da1425",
+  "source_hash": "710352c2bb0d16f959941e156e90a7fa1bcf8402",
+  "mode": "BASELINE",
+  "outcome": "INCONCLUSIVE",
+  "evidence": [
+    "INCONCLUSIVE"
+  ],
+  "build_environment": {
+    "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "machine": "x86_64",
+    "python": "3.14.5",
+    "toolchain": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+    "git": "git version 2.54.0",
+    "argv": [
+      "cargo",
+      "+1.97.1",
+      "test",
+      "--locked",
+      "-p",
+      "async-raft",
+      "--test",
+      "append_inconsistent_log",
+      "--",
+      "--nocapture"
+    ],
+    "source_patches": [
+      {
+        "path": "patches/upstream-divergent-log-test.patch",
+        "sha256": "a00f2b594771b48d258044d27701a96552fa053337f056e343a28b8704e794ca",
+        "scope": "test-only",
+        "roles": [
+          "vulnerable"
+        ],
+        "postimages": {
+          "async-raft/tests/append_inconsistent_log.rs": "c5a9d7979b72f3f700d05d9908dc738e59f79938"
+        }
+      }
+    ],
+    "dependency_hashes": {
+      "Cargo.lock": "b5785cc8f0d9d62d3946ab58ff8393ac85410d6a46ff8f52fb4c1185e0e9bf5f"
+    },
+    "compiler_flags": {
+      "RUSTFLAGS": "",
+      "GOFLAGS": "",
+      "GOEXPERIMENT": "",
+      "CGO_ENABLED": "",
+      "CC": "",
+      "CFLAGS": ""
+    },
+    "storage_qualification": "not performed; baseline only"
+  },
+  "workload": {
+    "version": "upstream-baseline/1",
+    "sha256": "a182a068d45d5cf353cfb5573324d3d39ff4b75f3754d79a702ffee8caf1f3df"
+  },
+  "fault_model_version": "upstream-fixture/1",
+  "oracle_version": "upstream-assertions/1",
+  "search_strategy": null,
+  "search_budget": {
+    "baseline_timeout_seconds": 120
+  },
+  "random_seed": null,
+  "number_of_executions": 1,
+  "time_to_first_failure": null,
+  "events_to_first_failure": null,
+  "counterexample_identifier": null,
+  "replay_result": {
+    "status": "NOT-RUN",
+    "attempts": 0,
+    "matching": 0,
+    "artifact": null
+  },
+  "invariant_violated": null,
+  "historical_mechanism_match": {
+    "status": "NOT-REVIEWED",
+    "reviewer": null,
+    "artifact": null
+  },
+  "native_confirmation_status": "NOT-RUN",
+  "model_limitations": [
+    "upstream baseline only; no historical reproduction or fair search discrimination claim"
+  ],
+  "missing_capabilities": [],
+  "oracle_reached": false,
+  "fairness_validated": false,
+  "coverage_validated": false,
+  "completed_budget": false,
+  "artifacts": [
+    {
+      "path": "stdout.log",
+      "sha256": "382bde619574719df9379ed305ca1456e099059e314d71e46d9b429b63d43a92"
+    },
+    {
+      "path": "environment.json",
+      "sha256": "d5462d36c89dcc9cebe172881dd5a031f4733c8b427bd9a2112c01cf44541838"
+    }
+  ],
+  "trace": null,
+  "witness": null,
+  "review": null,
+  "native_baseline_status": "FAILED",
+  "notes": "Exit 101; wall 37.883s. Executed upstream fixtures only. No automatic evidence promotion."
+}

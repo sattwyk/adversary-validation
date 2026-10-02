@@ -1,0 +1,22 @@
+{
+  "kind": "manual",
+  "toolchain": "Go 1.26.4 candidate baseline",
+  "argv": [
+    "go",
+    "test",
+    "-mod=readonly",
+    "-race",
+    "./..."
+  ],
+  "test_filter": "upstream suite",
+  "availability": "vulnerable-only",
+  "note": "Pinned vulnerable revision is the report's source anchor. Candidate PR is deliberately unpinned as a fix; do not call an open PR merge-preview SHA a merged fix. No fixed comparison is available.",
+  "dependency_status": "upstream-module-lock",
+  "dependency_files": [
+    "go.mod",
+    "go.sum"
+  ],
+  "coverage": "upstream baseline only; no historical reproduction or fair search discrimination claim",
+  "timeout_seconds": 120
+}
+

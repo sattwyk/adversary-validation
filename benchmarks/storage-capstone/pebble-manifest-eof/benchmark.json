@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "storage-capstone/pebble-manifest-eof",
+  "class": "J",
+  "title": "Pebble manifest record/crash recovery ambiguity",
+  "project": "Pebble",
+  "bug_identifier": "4562",
+  "upstream": "https://github.com/cockroachdb/pebble.git",
+  "status": "SOURCE-IDENTIFIED",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED"
+  ],
+  "references": [
+    "https://github.com/cockroachdb/pebble/pull/4562",
+    "https://github.com/cockroachdb/pebble/issues/4561",
+    "https://github.com/cockroachdb/pebble/commit/c532754949aacd080d6f774b6d244dbcb32ac23c"
+  ],
+  "source_anchors": [
+    "open.go",
+    "internal/manifest/version_edit.go",
+    "record/record.go",
+    "version_set_test.go"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": "fixed.lock"
+  },
+  "required_capabilities": [
+    "storage-ordering",
+    "power-loss",
+    "multi-object-recovery",
+    "shared-memory-scheduling"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "same historical counterexample must not be admitted"
+  },
+  "patches": [],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Pin toolchain, upstream go.mod/go.sum and build flags; inspect fixture compatibility on parent.",
+    "Prepare native multi-object crash/fault qualification independently of upstream MemFS.",
+    "Keep this benchmark late-stage; do not reduce it to one file or a record parser toy."
+  ]
+}
+

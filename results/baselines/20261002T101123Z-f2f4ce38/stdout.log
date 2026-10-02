@@ -1,0 +1,60 @@
+go: downloading github.com/armon/go-metrics v0.0.0-20190430140413-ec5e00d3c878
+go: downloading github.com/hashicorp/go-hclog v0.9.1
+go: downloading github.com/hashicorp/go-msgpack v0.5.5
+go: downloading github.com/stretchr/testify v1.3.0
+go: downloading github.com/hashicorp/go-immutable-radix v1.0.0
+go: downloading github.com/hashicorp/golang-lru v0.5.0
+go: downloading github.com/davecgh/go-spew v1.1.1
+go: downloading github.com/pmezard/go-difflib v1.0.0
+=== RUN   TestRaft_LeadershipTransferToInvalidID
+2026-10-02T15:42:31.186+0530 [INFO]  server-b4683eb4-486f-934f-294a-d5f758bbc4a7: initial configuration: index=1 servers="[{Suffrage:Voter ID:server-b4683eb4-486f-934f-294a-d5f758bbc4a7 Address:b4683eb4-486f-934f-294a-d5f758bbc4a7} {Suffrage:Voter ID:server-2889801b-0c60-1be7-bf5e-d9c09e5b3fd3 Address:2889801b-0c60-1be7-bf5e-d9c09e5b3fd3} {Suffrage:Voter ID:server-8a7eaded-e7ac-4fe4-844a-257d237d93df Address:8a7eaded-e7ac-4fe4-844a-257d237d93df}]"
+2026-10-02T15:42:31.186+0530 [INFO]  server-2889801b-0c60-1be7-bf5e-d9c09e5b3fd3: initial configuration: index=1 servers="[{Suffrage:Voter ID:server-b4683eb4-486f-934f-294a-d5f758bbc4a7 Address:b4683eb4-486f-934f-294a-d5f758bbc4a7} {Suffrage:Voter ID:server-2889801b-0c60-1be7-bf5e-d9c09e5b3fd3 Address:2889801b-0c60-1be7-bf5e-d9c09e5b3fd3} {Suffrage:Voter ID:server-8a7eaded-e7ac-4fe4-844a-257d237d93df Address:8a7eaded-e7ac-4fe4-844a-257d237d93df}]"
+2026-10-02T15:42:31.186+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: initial configuration: index=1 servers="[{Suffrage:Voter ID:server-b4683eb4-486f-934f-294a-d5f758bbc4a7 Address:b4683eb4-486f-934f-294a-d5f758bbc4a7} {Suffrage:Voter ID:server-2889801b-0c60-1be7-bf5e-d9c09e5b3fd3 Address:2889801b-0c60-1be7-bf5e-d9c09e5b3fd3} {Suffrage:Voter ID:server-8a7eaded-e7ac-4fe4-844a-257d237d93df Address:8a7eaded-e7ac-4fe4-844a-257d237d93df}]"
+2026-10-02T15:42:31.186+0530 [INFO]  server-b4683eb4-486f-934f-294a-d5f758bbc4a7: entering follower state: follower="Node at b4683eb4-486f-934f-294a-d5f758bbc4a7 [Follower]" leader-address= leader-id=
+2026-10-02T15:42:31.186+0530 [INFO]  server-2889801b-0c60-1be7-bf5e-d9c09e5b3fd3: entering follower state: follower="Node at 2889801b-0c60-1be7-bf5e-d9c09e5b3fd3 [Follower]" leader-address= leader-id=
+2026-10-02T15:42:31.186+0530 [INFO]  cluster: starting stability test: raft-state=Leader
+2026-10-02T15:42:31.186+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: entering follower state: follower="Node at 8a7eaded-e7ac-4fe4-844a-257d237d93df [Follower]" leader-address= leader-id=
+2026-10-02T15:42:31.261+0530 [WARN]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
+2026-10-02T15:42:31.261+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: entering candidate state: node="Node at 8a7eaded-e7ac-4fe4-844a-257d237d93df [Candidate]" term=2
+2026-10-02T15:42:31.261+0530 [WARN]  server-b4683eb4-486f-934f-294a-d5f758bbc4a7: heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
+2026-10-02T15:42:31.261+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: election won: tally=2
+2026-10-02T15:42:31.261+0530 [INFO]  server-b4683eb4-486f-934f-294a-d5f758bbc4a7: entering candidate state: node="Node at b4683eb4-486f-934f-294a-d5f758bbc4a7 [Candidate]" term=2
+2026-10-02T15:42:31.261+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: entering leader state: leader="Node at 8a7eaded-e7ac-4fe4-844a-257d237d93df [Leader]"
+2026-10-02T15:42:31.261+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: added peer, starting replication: peer=server-b4683eb4-486f-934f-294a-d5f758bbc4a7
+2026-10-02T15:42:31.261+0530 [INFO]  server-2889801b-0c60-1be7-bf5e-d9c09e5b3fd3: duplicate requestVote for same term: term=2
+2026-10-02T15:42:31.261+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: added peer, starting replication: peer=server-2889801b-0c60-1be7-bf5e-d9c09e5b3fd3
+2026-10-02T15:42:31.261+0530 [INFO]  server-b4683eb4-486f-934f-294a-d5f758bbc4a7: duplicate requestVote for same term: term=2
+2026-10-02T15:42:31.261+0530 [WARN]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: rejecting vote request since we have a leader: from=b4683eb4-486f-934f-294a-d5f758bbc4a7 leader=8a7eaded-e7ac-4fe4-844a-257d237d93df leader-id=server-8a7eaded-e7ac-4fe4-844a-257d237d93df
+2026-10-02T15:42:31.261+0530 [INFO]  server-b4683eb4-486f-934f-294a-d5f758bbc4a7: entering follower state: follower="Node at b4683eb4-486f-934f-294a-d5f758bbc4a7 [Follower]" leader-address=8a7eaded-e7ac-4fe4-844a-257d237d93df leader-id=server-8a7eaded-e7ac-4fe4-844a-257d237d93df
+2026-10-02T15:42:31.261+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: pipelining replication: peer="{Voter server-2889801b-0c60-1be7-bf5e-d9c09e5b3fd3 2889801b-0c60-1be7-bf5e-d9c09e5b3fd3}"
+2026-10-02T15:42:31.261+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: pipelining replication: peer="{Voter server-b4683eb4-486f-934f-294a-d5f758bbc4a7 b4683eb4-486f-934f-294a-d5f758bbc4a7}"
+2026-10-02T15:42:31.366+0530 [INFO]  cluster: stable state for Leader reached at 2026-10-02 15:42:31.261400781 +0530 IST m=+0.076844800 (1 nodes), 74.646099ms from start of poll, 75.236399ms from cluster start. Timeout at 2026-10-02 15:42:31.366402681 +0530 IST m=+0.181846700, 105.0019ms after stability
+2026-10-02T15:42:31.366+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: aborting pipeline replication: peer="{Voter server-2889801b-0c60-1be7-bf5e-d9c09e5b3fd3 2889801b-0c60-1be7-bf5e-d9c09e5b3fd3}"
+2026-10-02T15:42:31.366+0530 [INFO]  server-8a7eaded-e7ac-4fe4-844a-257d237d93df: aborting pipeline replication: peer="{Voter server-b4683eb4-486f-934f-294a-d5f758bbc4a7 b4683eb4-486f-934f-294a-d5f758bbc4a7}"
+--- PASS: TestRaft_LeadershipTransferToInvalidID (0.18s)
+=== RUN   TestRaft_LeadershipTransferLeaderReplicationTimeout
+2026-10-02T15:42:31.367+0530 [INFO]  server-cb49ff68-de94-2938-527a-28daf33c9b14: initial configuration: index=1 servers="[{Suffrage:Voter ID:server-cb49ff68-de94-2938-527a-28daf33c9b14 Address:cb49ff68-de94-2938-527a-28daf33c9b14} {Suffrage:Voter ID:server-5681025a-17e6-8ac2-799a-a63b20777d24 Address:5681025a-17e6-8ac2-799a-a63b20777d24} {Suffrage:Voter ID:server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3 Address:a7c2a567-79b3-2e85-0f9d-96a7e9c856b3}]"
+2026-10-02T15:42:31.367+0530 [INFO]  server-5681025a-17e6-8ac2-799a-a63b20777d24: initial configuration: index=1 servers="[{Suffrage:Voter ID:server-cb49ff68-de94-2938-527a-28daf33c9b14 Address:cb49ff68-de94-2938-527a-28daf33c9b14} {Suffrage:Voter ID:server-5681025a-17e6-8ac2-799a-a63b20777d24 Address:5681025a-17e6-8ac2-799a-a63b20777d24} {Suffrage:Voter ID:server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3 Address:a7c2a567-79b3-2e85-0f9d-96a7e9c856b3}]"
+2026-10-02T15:42:31.367+0530 [INFO]  server-cb49ff68-de94-2938-527a-28daf33c9b14: entering follower state: follower="Node at cb49ff68-de94-2938-527a-28daf33c9b14 [Follower]" leader-address= leader-id=
+2026-10-02T15:42:31.367+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: initial configuration: index=1 servers="[{Suffrage:Voter ID:server-cb49ff68-de94-2938-527a-28daf33c9b14 Address:cb49ff68-de94-2938-527a-28daf33c9b14} {Suffrage:Voter ID:server-5681025a-17e6-8ac2-799a-a63b20777d24 Address:5681025a-17e6-8ac2-799a-a63b20777d24} {Suffrage:Voter ID:server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3 Address:a7c2a567-79b3-2e85-0f9d-96a7e9c856b3}]"
+2026-10-02T15:42:31.367+0530 [INFO]  server-5681025a-17e6-8ac2-799a-a63b20777d24: entering follower state: follower="Node at 5681025a-17e6-8ac2-799a-a63b20777d24 [Follower]" leader-address= leader-id=
+2026-10-02T15:42:31.367+0530 [INFO]  cluster: starting stability test: raft-state=Leader
+2026-10-02T15:42:31.367+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: entering follower state: follower="Node at a7c2a567-79b3-2e85-0f9d-96a7e9c856b3 [Follower]" leader-address= leader-id=
+2026-10-02T15:42:31.427+0530 [WARN]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
+2026-10-02T15:42:31.427+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: entering candidate state: node="Node at a7c2a567-79b3-2e85-0f9d-96a7e9c856b3 [Candidate]" term=2
+2026-10-02T15:42:31.427+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: election won: tally=2
+2026-10-02T15:42:31.428+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: entering leader state: leader="Node at a7c2a567-79b3-2e85-0f9d-96a7e9c856b3 [Leader]"
+2026-10-02T15:42:31.428+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: added peer, starting replication: peer=server-cb49ff68-de94-2938-527a-28daf33c9b14
+2026-10-02T15:42:31.428+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: added peer, starting replication: peer=server-5681025a-17e6-8ac2-799a-a63b20777d24
+2026-10-02T15:42:31.428+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: pipelining replication: peer="{Voter server-cb49ff68-de94-2938-527a-28daf33c9b14 cb49ff68-de94-2938-527a-28daf33c9b14}"
+2026-10-02T15:42:31.428+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: pipelining replication: peer="{Voter server-5681025a-17e6-8ac2-799a-a63b20777d24 5681025a-17e6-8ac2-799a-a63b20777d24}"
+2026-10-02T15:42:31.533+0530 [INFO]  cluster: stable state for Leader reached at 2026-10-02 15:42:31.428198879 +0530 IST m=+0.243642998 (1 nodes), 60.559599ms from start of poll, 60.844999ms from cluster start. Timeout at 2026-10-02 15:42:31.533202679 +0530 IST m=+0.348646698, 105.0037ms after stability
+2026-10-02T15:42:31.533+0530 [INFO]  cluster: starting stability test: raft-state=Follower
+2026-10-02T15:42:31.639+0530 [INFO]  cluster: stable state for Follower reached at 2026-10-02 15:42:31.533346577 +0530 IST m=+0.348790596 (2 nodes), 800ns from start of poll, 165.992597ms from cluster start. Timeout at 2026-10-02 15:42:31.638350977 +0530 IST m=+0.453795096, 105.0045ms after stability
+2026-10-02T15:42:31.786+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: aborting pipeline replication: peer="{Voter server-cb49ff68-de94-2938-527a-28daf33c9b14 cb49ff68-de94-2938-527a-28daf33c9b14}"
+2026-10-02T15:42:31.786+0530 [INFO]  server-a7c2a567-79b3-2e85-0f9d-96a7e9c856b3: aborting pipeline replication: peer="{Voter server-5681025a-17e6-8ac2-799a-a63b20777d24 5681025a-17e6-8ac2-799a-a63b20777d24}"
+--- PASS: TestRaft_LeadershipTransferLeaderReplicationTimeout (0.42s)
+=== RUN   TestRaft_LeadershipTransferStopRightAway
+--- PASS: TestRaft_LeadershipTransferStopRightAway (0.00s)
+PASS
+ok  	github.com/hashicorp/raft	0.608s

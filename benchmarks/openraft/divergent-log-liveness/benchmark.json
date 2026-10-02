@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "openraft/divergent-log-liveness",
+  "class": "B",
+  "title": "Divergent logs permanently block replication",
+  "project": "OpenRaft (historical async-raft)",
+  "bug_identifier": "6d53aa12",
+  "upstream": "https://github.com/databendlabs/openraft.git",
+  "status": "BASELINE-PREPARED",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED",
+    "BUILD-VERIFIED"
+  ],
+  "references": [
+    "https://github.com/databendlabs/openraft/commit/6d53aa12f66ecd08e81bcb055eb17387b835e2eb"
+  ],
+  "source_anchors": [
+    "async-raft/src/core/append_entries.rs",
+    "async-raft/src/replication/mod.rs",
+    "async-raft/tests/append_inconsistent_log.rs"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": "fixed.lock"
+  },
+  "required_capabilities": [
+    "message-ordering",
+    "timers"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "same historical counterexample must not be admitted"
+  },
+  "patches": [
+    {
+      "path": "patches/upstream-divergent-log-test.patch",
+      "sha256": "a00f2b594771b48d258044d27701a96552fa053337f056e343a28b8704e794ca",
+      "scope": "test-only",
+      "roles": [
+        "vulnerable"
+      ],
+      "postimages": {
+        "async-raft/tests/append_inconsistent_log.rs": "c5a9d7979b72f3f700d05d9908dc738e59f79938"
+      }
+    }
+  ],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Investigate the retained vulnerable fixture's early election timeout without modifying the consensus algorithm; it did not reach the historical replication condition.",
+    "Establish a reviewed historical replication witness, causal trace and replay before claiming mechanism reproduction.",
+    "Prepare an ordinary API workload adapter that creates divergence without supplied log images."
+  ]
+}

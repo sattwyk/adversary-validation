@@ -1,0 +1,22 @@
+{
+  "kind": "manual",
+  "toolchain": "Go historical GOPATH and qualified crash stack pending",
+  "argv": [
+    "go",
+    "test",
+    "./wal",
+    "-run",
+    "^TestRecoverAfterCut$",
+    "-count=1"
+  ],
+  "test_filter": "TestRecoverAfterCut",
+  "availability": "both",
+  "note": "Ordinary close/reopen is a baseline only. SIGKILL does not test missing directory persistence; a qualified VM/block-device or native failpoint experiment is required.",
+  "dependency_status": "needs-lock-preparation",
+  "dependency_files": [
+    "glide.lock"
+  ],
+  "coverage": "upstream baseline only; no historical reproduction or fair search discrimination claim",
+  "timeout_seconds": 120
+}
+

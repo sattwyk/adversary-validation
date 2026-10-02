@@ -1,0 +1,31 @@
+{
+  "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "machine": "x86_64",
+  "python": "3.14.5",
+  "toolchain": "go version go1.26.4-X:nodwarf5 linux/amd64",
+  "git": "git version 2.54.0",
+  "argv": [
+    "go",
+    "test",
+    "-v",
+    "-mod=readonly",
+    "-run",
+    "^TestRaft_LeadershipTransfer(ToInvalidID|LeaderReplicationTimeout|StopRightAway)$",
+    "-count=1",
+    "-timeout=60s",
+    "."
+  ],
+  "dependency_hashes": {
+    "go.mod": "e250053727610bbcfb965d750f9f9e9a04570012278684e659b7434e1c4e4539",
+    "go.sum": "4d1e9b0416c890fc31bc5104316c83389f0899405b007d39a2c0cdf892f11047"
+  },
+  "compiler_flags": {
+    "RUSTFLAGS": "",
+    "GOFLAGS": "",
+    "GOEXPERIMENT": "",
+    "CGO_ENABLED": "",
+    "CC": "",
+    "CFLAGS": ""
+  },
+  "storage_qualification": "not performed; baseline only"
+}

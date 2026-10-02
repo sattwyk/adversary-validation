@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "fixed",
+  "upstream": "https://github.com/hashicorp/raft.git",
+  "commit": null,
+  "tree": null,
+  "status": "unresolved",
+  "relationship": "no-accepted-fix"
+}
+

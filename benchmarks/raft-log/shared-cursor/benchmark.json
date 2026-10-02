@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "raft-log/shared-cursor",
+  "class": "A",
+  "title": "Shared file cursor race",
+  "project": "raft-log",
+  "bug_identifier": "707a9a2",
+  "upstream": "https://github.com/drmingdrmer/raft-log.git",
+  "status": "BASELINE-PREPARED",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED",
+    "BUILD-VERIFIED"
+  ],
+  "references": [
+    "https://github.com/drmingdrmer/raft-log/commit/707a9a2463ab215175ef9fbc8d86ea57c2aeac72"
+  ],
+  "source_anchors": [
+    "src/chunk/mod.rs",
+    "src/tests/test_concurrent_read.rs"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": "fixed.lock"
+  },
+  "required_capabilities": [
+    "shared-memory-scheduling"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "same historical counterexample must not be admitted"
+  },
+  "patches": [
+    {
+      "path": "patches/upstream-reader-test.patch",
+      "sha256": "d7c6d647d4e0493a52688a45bc6a36327b74aacfaa59ce217ad661d40edf26c7",
+      "scope": "test-only",
+      "roles": [
+        "vulnerable"
+      ],
+      "postimages": {
+        "src/tests/mod.rs": "11bc97a601ef4b656a2dd2b2be7e481c7c224b2b",
+        "src/tests/test_concurrent_read.rs": "5749f8ceacaf6c9e437ea401c8fd3f957ffb9212"
+      }
+    }
+  ],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Capture a complete native causal trace and independent full requested-range oracle; the retained stress failure has assertion logs only.",
+    "Disclose any targeted internal checkpoint; do not label it blind.",
+    "Prepare the ordinary workload driver and demonstrate reliable replay separately from the executed native stress fixture."
+  ]
+}

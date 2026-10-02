@@ -1,0 +1,29 @@
+{
+  "version": "envelope/1",
+  "required_capabilities": [
+    "message-ordering",
+    "timers",
+    "fair-progress"
+  ],
+  "behaviors": [
+    {
+      "id": "rpc-delay-loss",
+      "semantics": "Protocol-module RPC sends/replies may be delayed, dropped or delivered in different orders across independent sends. Message payloads are not changed. Same-connection TCP ordering is not claimed at this boundary."
+    },
+    {
+      "id": "partition-heal",
+      "semantics": "At most one node is isolated at a time during the fault phase; directional edges may stop progress. Every edge heals before recovery; no immediate membership notification."
+    },
+    {
+      "id": "timer-order",
+      "semantics": "Election/heartbeat timers expire at or after actual configured deadlines; eligible RPC and timeout handlers can run in either order. Clocks advance during recovery."
+    }
+  ],
+  "recovery": "Faults cease; all configured nodes/connections are healthy and clocks advance. Every continuously enabled task, submitted IO/delivery and due timer progresses within 1000 selected eligible events. Grace is 20 maximum configured election timeouts including upstream jitter, then completion of the declared healthy-phase writes. A violated fairness bound invalidates a liveness judgment; a host watchdog is not a target failure.",
+  "exclusions": [
+    "Byzantine behavior",
+    "weak-memory exploration",
+    "unqualified native filesystem/device power-loss correspondence",
+    "full production service transport/framing outside the stated module boundary"
+  ]
+}

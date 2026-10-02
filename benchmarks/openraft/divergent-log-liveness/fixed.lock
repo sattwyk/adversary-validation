@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "fixed",
+  "upstream": "https://github.com/databendlabs/openraft.git",
+  "commit": "6d53aa12f66ecd08e81bcb055eb17387b835e2eb",
+  "tree": "683cf1fb5e9c46a129790c53985b9d8d92f30750",
+  "status": "source-verified",
+  "relationship": "fix-commit"
+}
+

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "sqlite/wal-reset",
+  "class": "G",
+  "title": "Concurrent WAL checkpoint/reset corruption",
+  "project": "SQLite",
+  "bug_identifier": "walreset",
+  "upstream": "https://github.com/sqlite/sqlite.git",
+  "status": "SOURCE-IDENTIFIED",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED"
+  ],
+  "references": [
+    "https://sqlite.org/wal.html#walreset",
+    "https://sqlite.org/src/info/5aadfbbdd83b051b",
+    "https://github.com/sqlite/sqlite/commit/3c7a03032f9c69feb832b96447701bee6fa3ba81"
+  ],
+  "source_anchors": [
+    "src/wal.c",
+    "test/walrestart.test"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": "fixed.lock"
+  },
+  "required_capabilities": [
+    "shared-memory-scheduling",
+    "shared-wal-index",
+    "storage-ordering",
+    "multi-object-recovery"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "same historical counterexample must not be admitted"
+  },
+  "patches": [],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Pin compiler, configure flags, Tcl and thread-enabled build environment.",
+    "Run the unmodified published native reproduction separately from diagnostic checkpoints.",
+    "Demonstrate the window is schedulable before interpreting a search miss; exclusive/single-connection substitutes are UNSUPPORTED."
+  ]
+}
+

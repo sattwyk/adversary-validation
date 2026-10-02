@@ -1,0 +1,28 @@
+warning: use of deprecated method `futures::stream::FuturesOrdered::<Fut>::push`: use `push_back` instead
+   --> async-raft/src/core/append_entries.rs:301:37
+    |
+301 |         self.replicate_to_sm_handle.push(handle);
+    |                                     ^^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated method `futures::stream::FuturesOrdered::<Fut>::push`: use `push_back` instead
+   --> async-raft/src/core/append_entries.rs:346:37
+    |
+346 |         self.replicate_to_sm_handle.push(handle);
+    |                                     ^^^^
+
+warning: `async-raft` (lib) generated 2 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s
+     Running tests/append_inconsistent_log.rs (/home/satty/study/adversary-validation/.work/build/openraft/divergent-log-liveness/fixed/debug/deps/append_inconsistent_log-522aa265e24827ef)
+
+running 1 test
+Oct 02 16:22:20.191 ERROR async_raft::core: error reporting metrics error=channel closed id=0
+Oct 02 16:22:22.463 ERROR async_raft::core::vote: error while requesting vote from peer error=target node is isolated peer=1
+Oct 02 16:22:22.503 ERROR async_raft::core::vote: error while requesting vote from peer error=target node is isolated peer=2
+Oct 02 16:22:22.504 ERROR async_raft::core::vote: error while requesting vote from peer error=target node is isolated peer=0
+Oct 02 16:22:22.574 ERROR async_raft::core::vote: error while requesting vote from peer error=target node is isolated peer=1
+test append_inconsistent_log ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.45s
+

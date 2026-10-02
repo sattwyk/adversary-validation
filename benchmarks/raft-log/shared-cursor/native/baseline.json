@@ -1,0 +1,30 @@
+{
+  "kind": "cargo",
+  "toolchain": "1.97.1",
+  "argv": [
+    "cargo",
+    "+1.97.1",
+    "test",
+    "--locked",
+    "--lib",
+    "tests::test_concurrent_read::test_concurrent_read_race_condition",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "test_filter": "test_concurrent_read_race_condition",
+  "availability": "both",
+  "note": "Exact upstream regression copied only to the vulnerable test module. Fixed source already contains it. Both retain the original reader algorithm, share native/Cargo.lock and use Rust 1.97.1. This historically authored native stress fixture is not an ordinary search workload or deterministic replay.",
+  "dependency_status": "frozen-overlay",
+  "dependency_files": [
+    "Cargo.lock"
+  ],
+  "coverage": "upstream baseline only; no historical reproduction or fair search discrimination claim",
+  "timeout_seconds": 120,
+  "dependency_overlays": {
+    "Cargo.lock": {
+      "path": "native/Cargo.lock",
+      "sha256": "4f52865f3af545c94bf611458613e15cad1a94ecf91691214c3cda89637350ce"
+    }
+  }
+}

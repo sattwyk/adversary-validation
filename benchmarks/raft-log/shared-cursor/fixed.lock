@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "fixed",
+  "upstream": "https://github.com/drmingdrmer/raft-log.git",
+  "commit": "707a9a2463ab215175ef9fbc8d86ea57c2aeac72",
+  "tree": "a242ffdef641866de9fe0f959e4454eed728a501",
+  "status": "source-verified",
+  "relationship": "fix-commit"
+}
+

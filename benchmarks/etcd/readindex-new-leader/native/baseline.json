@@ -1,0 +1,22 @@
+{
+  "kind": "manual",
+  "toolchain": "Go historical GOPATH preparation pending",
+  "argv": [
+    "go",
+    "test",
+    "./raft",
+    "-run",
+    "^TestReadOnlyForNewLeader$",
+    "-count=1"
+  ],
+  "test_filter": "TestReadOnlyForNewLeader",
+  "availability": "fixed-only",
+  "note": "Historical repository uses glide.lock rather than go.mod. A pinned GOPATH/vendor build must be prepared; the runner refuses unresolved manual baselines.",
+  "dependency_status": "needs-lock-preparation",
+  "dependency_files": [
+    "glide.lock"
+  ],
+  "coverage": "upstream baseline only; no historical reproduction or fair search discrimination claim",
+  "timeout_seconds": 120
+}
+

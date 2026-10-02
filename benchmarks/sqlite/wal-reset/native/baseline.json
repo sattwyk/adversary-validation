@@ -1,0 +1,16 @@
+{
+  "kind": "manual",
+  "toolchain": "C compiler/Tcl/make preparation pending",
+  "argv": [
+    "make",
+    "test"
+  ],
+  "test_filter": "walrestart",
+  "availability": "both",
+  "note": "Build Unix threaded shared-memory configuration; inspect test/walrestart.test for upstream scripted fault-sim regression. Retain original wal.c and native VFS/mapped state. Historical git parent/fix are the narrow pair; published 3.51.2/3.51.3 versions are additional future controls.",
+  "dependency_status": "needs-lock-preparation",
+  "dependency_files": [],
+  "coverage": "upstream baseline only; no historical reproduction or fair search discrimination claim",
+  "timeout_seconds": 120
+}
+

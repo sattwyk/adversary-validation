@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "vulnerable",
+  "upstream": "https://github.com/hashicorp/raft.git",
+  "commit": "4c8f61ac9255bb95fb3b8319dfcf0ae53ab325b6",
+  "tree": "316b9c82c790f6e35075052b674ace2fbfaa15a0",
+  "status": "source-verified",
+  "relationship": "reported-source-anchor"
+}
+

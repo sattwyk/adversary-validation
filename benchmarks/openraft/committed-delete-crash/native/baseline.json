@@ -1,0 +1,26 @@
+{
+  "kind": "cargo",
+  "toolchain": "1.97.1",
+  "argv": [
+    "cargo",
+    "+1.97.1",
+    "test",
+    "--locked",
+    "-p",
+    "async-raft",
+    "--test",
+    "snapshot_overrides_membership",
+    "--",
+    "--nocapture"
+  ],
+  "test_filter": "snapshot_overrides_membership",
+  "availability": "both",
+  "note": "This is a surrounding upstream baseline, not a crash reproduction. Upstream memstore retains state only through test-owned objects; that alone is not a production durable-storage adapter.",
+  "dependency_status": "needs-lock-preparation",
+  "dependency_files": [
+    "Cargo.lock"
+  ],
+  "coverage": "upstream baseline only; no historical reproduction or fair search discrimination claim",
+  "timeout_seconds": 120
+}
+

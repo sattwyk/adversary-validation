@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "vulnerable",
+  "upstream": "https://github.com/drmingdrmer/raft-log.git",
+  "commit": "9e61000ca32474aa0ece9917b6cf52c99518da78",
+  "tree": "dc3879b27bd07479a80c4acab6a5553123ac4a51",
+  "status": "source-verified",
+  "relationship": "first-parent-of-fix"
+}
+

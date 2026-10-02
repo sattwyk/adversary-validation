@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "etcd/wal-directory-sync",
+  "class": "F",
+  "title": "WAL rename missing directory durability",
+  "project": "etcd WAL",
+  "bug_identifier": "6368",
+  "upstream": "https://github.com/etcd-io/etcd.git",
+  "status": "SOURCE-IDENTIFIED",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED"
+  ],
+  "references": [
+    "https://github.com/etcd-io/etcd/issues/6368",
+    "https://github.com/etcd-io/etcd/pull/6381",
+    "https://github.com/etcd-io/etcd/commit/bd7107bd4bf26219ba9852aa6c4c817ccde0191c"
+  ],
+  "source_anchors": [
+    "wal/wal.go",
+    "wal/wal_unix.go"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": "fixed.lock"
+  },
+  "required_capabilities": [
+    "storage-ordering",
+    "directory-durability",
+    "power-loss",
+    "multi-object-recovery"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "same historical counterexample must not be admitted"
+  },
+  "patches": [],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Pin GOPATH dependencies and build flags.",
+    "Define a concrete Linux/filesystem/device qualification and disposable VM procedure.",
+    "Validate that any synthetic namespace image is legally admitted; keep image fixtures labeled scripted."
+  ]
+}
+

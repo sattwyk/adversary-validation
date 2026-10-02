@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "openraft/committed-delete-crash",
+  "class": "C",
+  "title": "Committed entry deletion across crash",
+  "project": "OpenRaft (historical async-raft)",
+  "bug_identifier": "9540c904",
+  "upstream": "https://github.com/databendlabs/openraft.git",
+  "status": "SOURCE-IDENTIFIED",
+  "historical_claim_kind": "historical-bug",
+  "evidence": [
+    "DOCUMENTED",
+    "SOURCE-VERIFIED"
+  ],
+  "references": [
+    "https://github.com/databendlabs/openraft/commit/9540c904da4ae005baec01868e01016f3bc76810"
+  ],
+  "source_anchors": [
+    "async-raft/src/core/append_entries.rs",
+    "async-raft/src/storage.rs"
+  ],
+  "targets": {
+    "vulnerable": "vulnerable.lock",
+    "fixed": "fixed.lock"
+  },
+  "required_capabilities": [
+    "message-ordering",
+    "timers",
+    "storage-ordering",
+    "process-crash",
+    "client-history"
+  ],
+  "inputs": {
+    "workload": "workload.json",
+    "environment": "environment.json",
+    "oracle": "oracle.json"
+  },
+  "reviewer_only": [
+    "expected-mechanism.md",
+    "provenance.md",
+    "native/baseline.json"
+  ],
+  "expectations": {
+    "vulnerable": "counterexample expected",
+    "fixed": "same historical counterexample must not be admitted"
+  },
+  "patches": [],
+  "native": "native/baseline.json",
+  "preparation_gaps": [
+    "Prepare a local storage implementation satisfying this historical RaftStorage contract without changing the Raft algorithm.",
+    "Audit delete/append persistence and abrupt restart semantics.",
+    "Execute the historical fixture before claiming S1 or production storage correspondence."
+  ]
+}
+

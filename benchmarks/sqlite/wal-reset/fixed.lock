@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "role": "fixed",
+  "upstream": "https://github.com/sqlite/sqlite.git",
+  "commit": "3c7a03032f9c69feb832b96447701bee6fa3ba81",
+  "tree": "d0e31337f728451a8dcd52b4c507b293f06bea17",
+  "status": "source-verified",
+  "relationship": "fix-commit"
+}
+

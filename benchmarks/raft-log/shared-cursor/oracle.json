@@ -1,0 +1,13 @@
+{
+  "version": "oracle/1",
+  "property": "For every completed range read, each returned log identity and payload equals the requested immutable record; valid prewritten records do not produce decode/EOF errors due to other readers.",
+  "method": "Compare (term,index,payload) tuples against an independent prewritten input table. On immutable valid data, unexpected decoding error/panic is a violation after harness causes are excluded.",
+  "witness_requirements": "Requested range, exact stored input, returned identity/bytes, file identity, both reader operations and their causal overlap.",
+  "control_requirements": [
+    "known-valid history/state accepted",
+    "deliberately invalid history/state rejected",
+    "fixed revision matched when available",
+    "unreached checker is INCONCLUSIVE"
+  ]
+}
+

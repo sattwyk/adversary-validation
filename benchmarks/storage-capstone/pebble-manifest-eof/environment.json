@@ -1,0 +1,26 @@
+{
+  "version": "envelope/1",
+  "required_capabilities": [
+    "storage-ordering",
+    "power-loss",
+    "multi-object-recovery",
+    "shared-memory-scheduling"
+  ],
+  "behaviors": [
+    {
+      "id": "multi-object-power-cut",
+      "semantics": "Up to two power cuts over all objects in one volume. Completed successful sync fences survive. An unfenced append may retain any byte-prefix, including zero or all bytes; previously fenced untouched bytes cannot change. No record-atomic append assumption. Same-filesystem rename is atomic live; unfenced namespace changes admit old/new states, while directory sync persists preceding changes. Independent objects retain distinct identities. This is a declared logical profile, not native filesystem qualification; no spontaneous corruption."
+    },
+    {
+      "id": "concurrent-tasks",
+      "semantics": "Independently runnable native implementation tasks retain shared state and real synchronization; observation must not add serialization."
+    }
+  ],
+  "recovery": "Faults cease; restart through ordinary Pebble Open and its real manifest/WAL/table recovery paths. Complete recovery within 100000 enabled operation/task selections; budget exhaustion without qualified progress is INCONCLUSIVE. Validate the retained sync-acknowledged key/value ledger, not a surrogate manifest parser alone.",
+  "exclusions": [
+    "Byzantine behavior",
+    "weak-memory exploration",
+    "unqualified native filesystem/device power-loss correspondence",
+    "full production service transport/framing outside the stated module boundary"
+  ]
+}

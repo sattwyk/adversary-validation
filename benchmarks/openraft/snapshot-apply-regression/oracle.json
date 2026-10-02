@@ -1,0 +1,13 @@
+{
+  "version": "oracle/1",
+  "property": "Within a process incarnation, accepted state-machine progress never publishes a lower last-applied index after a later prefix has become visible. Its applied values must remain consistent with that prefix.",
+  "method": "Observe serialized publication events for process-incarnation last_applied and state digests. Reject any decrease without an explicitly declared restart; independently compare values against committed prefix.",
+  "witness_requirements": "Earlier apply completion, later snapshot prefix, publication events, task identities, same incarnation and observed regression. Normal monotonic metric sampling alone may miss a transient regression.",
+  "control_requirements": [
+    "known-valid history/state accepted",
+    "deliberately invalid history/state rejected",
+    "fixed revision matched when available",
+    "unreached checker is INCONCLUSIVE"
+  ]
+}
+

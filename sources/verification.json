@@ -1,0 +1,182 @@
+{
+  "raft-log/shared-cursor": {
+    "vulnerable": {
+      "commit": "9e61000ca32474aa0ece9917b6cf52c99518da78",
+      "tree": "dc3879b27bd07479a80c4acab6a5553123ac4a51",
+      "anchors": {
+        "src/chunk/mod.rs": "532019341b6742b5f8cae52e5f3b459df10ebf66"
+      }
+    },
+    "fixed": {
+      "commit": "707a9a2463ab215175ef9fbc8d86ea57c2aeac72",
+      "tree": "a242ffdef641866de9fe0f959e4454eed728a501",
+      "anchors": {
+        "src/chunk/mod.rs": "98a2cf5517234bf72a45446493eb94a1e65c57a8",
+        "src/tests/test_concurrent_read.rs": "5749f8ceacaf6c9e437ea401c8fd3f957ffb9212"
+      }
+    }
+  },
+  "openraft/divergent-log-liveness": {
+    "vulnerable": {
+      "commit": "ab6689d951954e3adbe8eb427364cf9062da1425",
+      "tree": "710352c2bb0d16f959941e156e90a7fa1bcf8402",
+      "anchors": {
+        "async-raft/src/core/append_entries.rs": "663bc48de56cf0f1cb4e0d82783a1b5a5db26fa9",
+        "async-raft/src/replication/mod.rs": "3bd20e6afd1ac1b62de3e5b83407992ac85ac0e1"
+      }
+    },
+    "fixed": {
+      "commit": "6d53aa12f66ecd08e81bcb055eb17387b835e2eb",
+      "tree": "683cf1fb5e9c46a129790c53985b9d8d92f30750",
+      "anchors": {
+        "async-raft/src/core/append_entries.rs": "0a4f1b397bbd1238bf4b2e3deacc2918c4f2ddae",
+        "async-raft/src/replication/mod.rs": "3bd20e6afd1ac1b62de3e5b83407992ac85ac0e1",
+        "async-raft/tests/append_inconsistent_log.rs": "c5a9d7979b72f3f700d05d9908dc738e59f79938"
+      }
+    }
+  },
+  "openraft/committed-delete-crash": {
+    "vulnerable": {
+      "commit": "05ecf7efab1cf7399eea5ede589d86878eb73d42",
+      "tree": "1bc2705aac81402bfd0477e70ebca3ff21fc6b74",
+      "anchors": {
+        "async-raft/src/core/append_entries.rs": "0a4f1b397bbd1238bf4b2e3deacc2918c4f2ddae",
+        "async-raft/src/storage.rs": "53312851a628c134d61755984c6c43f5bcd189d7"
+      }
+    },
+    "fixed": {
+      "commit": "9540c904da4ae005baec01868e01016f3bc76810",
+      "tree": "ee8013d8533b8c1f14399a7c9b477294cd54e533",
+      "anchors": {
+        "async-raft/src/core/append_entries.rs": "a88237b8276f1020fab3a03381d5549e793660f3",
+        "async-raft/src/storage.rs": "53312851a628c134d61755984c6c43f5bcd189d7"
+      }
+    }
+  },
+  "openraft/snapshot-apply-regression": {
+    "vulnerable": {
+      "commit": "4d58a51e41189acba06c1d2a0e8466759d9eb785",
+      "tree": "081dc79e00621e2369f260946d2b5fbba9d05a69",
+      "anchors": {
+        "async-raft/src/core/install_snapshot.rs": "663207a43944e48d25cb40f7e55f26533f3d38fe",
+        "async-raft/src/core/append_entries.rs": "f3278be9584bca2c573d634cc1dfe6d588472761",
+        "async-raft/src/core/mod.rs": "faf3cb4cb2f910983a8e10d4e36c52e31c759403"
+      }
+    },
+    "fixed": {
+      "commit": "eed681d57950fc58b6ca71a45814b8f6d2bb1223",
+      "tree": "ead1bd94a996cc264e1774d809e3b0fc5d10c9c4",
+      "anchors": {
+        "async-raft/src/core/install_snapshot.rs": "a38420c268b008d2f4b14d56998e5278859c0f59",
+        "async-raft/src/core/append_entries.rs": "1a6f55397d7a9fba9ef85f94f8de83687f5f2402",
+        "async-raft/src/core/mod.rs": "40553dcb625b3be252f06b5bcadc87d56753216e"
+      }
+    }
+  },
+  "etcd/readindex-new-leader": {
+    "vulnerable": {
+      "commit": "ad1b754e020b6ab55d431e198d29932cd140c3e2",
+      "tree": "07f5073c694f113c9fa41a1616a91f7d1aa00c24",
+      "anchors": {
+        "raft/raft.go": "70a260dbe652c60e4f98d3efe85601cf1c2f9234",
+        "raft/raft_test.go": "a6fc4d98a403f2f25e647d981fccc78d183726a5",
+        "raft/read_only.go": "05a21dabd1f6e0d5c40e1dbb4d71005c85869a5d"
+      }
+    },
+    "fixed": {
+      "commit": "9342647e0c9b9a2a12e4bc5ee76d28d5b9f29f83",
+      "tree": "55eb9df4d9ef1e25eac31d239f5de5d301fe4fa0",
+      "anchors": {
+        "raft/raft.go": "7be4407ee2bb4eec8f9841fb7d0792580a6577bd",
+        "raft/raft_test.go": "c429651284dd969b2659934924f8f1e345703399",
+        "raft/read_only.go": "05a21dabd1f6e0d5c40e1dbb4d71005c85869a5d"
+      }
+    }
+  },
+  "etcd/wal-directory-sync": {
+    "vulnerable": {
+      "commit": "c449da6ff9cb64d7f980e6f5deed4f6f82b70e39",
+      "tree": "8ac6d2f30140e47899260b99d16297a73c4e5d5f",
+      "anchors": {
+        "wal/wal.go": "13193c064a40dd51c761fbd3fefd13d19b4f098a",
+        "wal/wal_unix.go": "101ea6acc3c8f07df2974f02aa498a38099c2a20"
+      }
+    },
+    "fixed": {
+      "commit": "bd7107bd4bf26219ba9852aa6c4c817ccde0191c",
+      "tree": "76408639c98cf250d770423a3c89ec43398362f6",
+      "anchors": {
+        "wal/wal.go": "377f35fef483a7d44726fb3138b7d6dc85e699a3",
+        "wal/wal_unix.go": "82fd6a17a74137b103e2938202fdcb0c8ac61a6e"
+      }
+    }
+  },
+  "sqlite/wal-reset": {
+    "vulnerable": {
+      "commit": "bae4055493c3d9549f307c20851f4b2c1e0cb5c4",
+      "tree": "7dcc065fce923c5809b1ea382efc7260e84df0d0",
+      "anchors": {
+        "src/wal.c": "06985215861f85f430b16f006aed83cb4e6dd58f"
+      }
+    },
+    "fixed": {
+      "commit": "3c7a03032f9c69feb832b96447701bee6fa3ba81",
+      "tree": "d0e31337f728451a8dcd52b4c507b293f06bea17",
+      "anchors": {
+        "src/wal.c": "7f7bee62627aed6b3c4c8362e69a7d30a1141897",
+        "test/walrestart.test": "4274b2e33c7ccc6d680a29bf26829ace89c13bca"
+      }
+    }
+  },
+  "hashicorp-raft/async-heartbeat-safety": {
+    "vulnerable": {
+      "commit": "4c8f61ac9255bb95fb3b8319dfcf0ae53ab325b6",
+      "tree": "316b9c82c790f6e35075052b674ace2fbfaa15a0",
+      "anchors": {
+        "raft.go": "1a66c970ff9120008ede5657687868c4b6c8626f",
+        "net_transport.go": "5431bd44ee18e3bfc9d13d42ddd8b36cc017301c",
+        "replication.go": "d48a8c83d1b0aa4ec668ab1c609dedb2d7b045bc"
+      }
+    }
+  },
+  "hashicorp-raft/transfer-flag": {
+    "vulnerable": {
+      "commit": "38cb18695192d910bd774e2442d198fdc2c691a0",
+      "tree": "c2b9e9f81d3cc8d79218f98d0b482b833ff3f004",
+      "anchors": {
+        "raft.go": "eebc2e113fa2ce888d6e69dd285d16877e7e3478",
+        "raft_test.go": "6af480eb14a4b7a360b42f7e23606e5925a2cc91"
+      }
+    },
+    "fixed": {
+      "commit": "f2fdbd651e1d824151bfb0f73aa297b8903632ac",
+      "tree": "4a36207d0ed62f7285896f3fb1629c4f637912fd",
+      "anchors": {
+        "raft.go": "b442aea00fcd134ad4e919e7cb8089f13f512b4d",
+        "raft_test.go": "6af480eb14a4b7a360b42f7e23606e5925a2cc91"
+      }
+    }
+  },
+  "storage-capstone/pebble-manifest-eof": {
+    "vulnerable": {
+      "commit": "57c482fb4e96fb89ca76cbc582354240a54f2f8c",
+      "tree": "d001b99499392d57d7563e36d5980682c67c4e3d",
+      "anchors": {
+        "open.go": "8685e0fe6b791230af8e11ad429821ad08823641",
+        "internal/manifest/version_edit.go": "50f3cf65497263be64210b4cbab9f29cfcdc0328",
+        "record/record.go": "7aee9c8f296a92ca564ecbec37038a7cb0da1402",
+        "version_set_test.go": "c1a20376e47f63c10b370015e749cb12ef2bbf23"
+      }
+    },
+    "fixed": {
+      "commit": "c532754949aacd080d6f774b6d244dbcb32ac23c",
+      "tree": "c1f8df2416dc5947b456c18d4a9ae3418ad6924b",
+      "anchors": {
+        "open.go": "43e9b8997911f60d5505dd84f70058d77e0e5541",
+        "internal/manifest/version_edit.go": "e597f9649ccc6c47cc9314d85144076783c9d545",
+        "record/record.go": "20b1624d31264f13ca0db565a658f35c33140494",
+        "version_set_test.go": "bce8716773c75edba4635f9f4c5a12f50b028217"
+      }
+    }
+  }
+}

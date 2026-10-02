@@ -1,0 +1,13 @@
+{
+  "version": "oracle/1",
+  "property": "Successful committed transactions remain present and database contents/integrity match the sequential transactional specification after concurrent checkpoint/write activity and normal reopen.",
+  "method": "Use independently recorded transaction IDs/values and legal transactional ordering, full table comparison plus PRAGMA integrity_check after checkpoint and reopen. Integrity_check alone can miss lost logical updates.",
+  "witness_requirements": "Checkpoint header generation, writer reset/generation, native shared-memory identities and lock transitions, checkpoint backfill publication, committed input table and recovered table mismatch.",
+  "control_requirements": [
+    "known-valid history/state accepted",
+    "deliberately invalid history/state rejected",
+    "fixed revision matched when available",
+    "unreached checker is INCONCLUSIVE"
+  ]
+}
+

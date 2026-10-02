@@ -1,0 +1,618 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "benchmark": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_revision": {
+      "enum": [
+        "vulnerable",
+        "fixed"
+      ]
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "source_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "mode": {
+      "enum": [
+        "BASELINE",
+        "REPRODUCTION",
+        "REDISCOVERY",
+        "BLIND REDISCOVERY"
+      ]
+    },
+    "outcome": {
+      "enum": [
+        "COUNTEREXAMPLE FOUND",
+        "NO FAILURE FOUND",
+        "MODEL CANNOT REPRESENT REQUIRED BEHAVIOR",
+        "BENCHMARK INVALID",
+        "INCONCLUSIVE",
+        "HARNESS FAILURE"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "DOCUMENTED",
+          "SOURCE-VERIFIED",
+          "BUILD-VERIFIED",
+          "NATIVE-REPRODUCED",
+          "SCRIPTED-REPRODUCED",
+          "SEARCH-REDISCOVERED",
+          "BLIND-REDISCOVERED",
+          "FIXED-CONTROL-PASSED",
+          "NATIVE-CONFIRMED",
+          "UNSUPPORTED",
+          "INCONCLUSIVE",
+          "HARNESS-FAILURE"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "build_environment": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "workload": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "version",
+        "sha256"
+      ]
+    },
+    "fault_model_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oracle_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "search_strategy": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "policy_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "name",
+            "version",
+            "policy_sha256"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "search_budget": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "random_seed": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "number_of_executions": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "time_to_first_failure": {
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "events_to_first_failure": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "counterexample_identifier": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "replay_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT-RUN",
+            "MATCHED",
+            "DIVERGED",
+            "INCOMPATIBLE",
+            "NOT-ADMITTED"
+          ]
+        },
+        "attempts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "matching": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "artifact": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "attempts",
+        "matching",
+        "artifact"
+      ]
+    },
+    "invariant_violated": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "historical_mechanism_match": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT-REVIEWED",
+            "MATCH",
+            "MISMATCH",
+            "UNKNOWN"
+          ]
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "artifact": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "reviewer",
+        "artifact"
+      ]
+    },
+    "native_confirmation_status": {
+      "enum": [
+        "NOT-RUN",
+        "CONFIRMED",
+        "REJECTED",
+        "UNAVAILABLE"
+      ]
+    },
+    "model_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "missing_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "oracle_reached": {
+      "type": "boolean"
+    },
+    "fairness_validated": {
+      "type": "boolean"
+    },
+    "coverage_validated": {
+      "type": "boolean"
+    },
+    "completed_budget": {
+      "type": "boolean"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ]
+      }
+    },
+    "trace": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "witness": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "review": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reviewer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "attestations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "artifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ]
+            }
+          },
+          "required": [
+            "reviewer",
+            "attestations",
+            "artifact"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "native_baseline_status": {
+      "enum": [
+        "NOT-RUN",
+        "PASSED",
+        "FAILED",
+        "BUILD-FAILED",
+        "ZERO-TESTS",
+        "UNPREPARED"
+      ]
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "benchmark",
+    "target_revision",
+    "source_commit",
+    "source_hash",
+    "mode",
+    "outcome",
+    "evidence",
+    "build_environment",
+    "workload",
+    "fault_model_version",
+    "oracle_version",
+    "search_strategy",
+    "search_budget",
+    "random_seed",
+    "number_of_executions",
+    "time_to_first_failure",
+    "events_to_first_failure",
+    "counterexample_identifier",
+    "replay_result",
+    "invariant_violated",
+    "historical_mechanism_match",
+    "native_confirmation_status",
+    "model_limitations",
+    "missing_capabilities",
+    "oracle_reached",
+    "fairness_validated",
+    "coverage_validated",
+    "completed_budget",
+    "artifacts",
+    "trace",
+    "witness",
+    "review",
+    "native_baseline_status",
+    "notes"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "COUNTEREXAMPLE FOUND"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "number_of_executions": {
+            "minimum": 1
+          },
+          "invariant_violated": {
+            "type": "string",
+            "minLength": 1
+          },
+          "counterexample_identifier": {
+            "type": "string",
+            "minLength": 1
+          },
+          "trace": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ]
+          },
+          "witness": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "MODEL CANNOT REPRESENT REQUIRED BEHAVIOR"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "missing_capabilities": {
+            "minItems": 1
+          },
+          "evidence": {
+            "contains": {
+              "const": "UNSUPPORTED"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "NO FAILURE FOUND"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "number_of_executions": {
+            "minimum": 1
+          },
+          "oracle_reached": {
+            "const": true
+          },
+          "coverage_validated": {
+            "const": true
+          },
+          "completed_budget": {
+            "const": true
+          },
+          "missing_capabilities": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
